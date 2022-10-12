@@ -30,19 +30,20 @@ public class RMIServer extends UnicastRemoteObject implements MyInterface{
     }
      
     public static void main(String[] args) {
-        try {
+        try {   
             RMIServer p = new RMIServer();
             Naming.rebind("myinterface", p);
         } catch (Exception e) {
             System.out.println("Exception occured: " + e.getMessage());
         }
     }
-
+    
+    DefaultSystemTime time;
     @Override
     public boolean bid(float bidAmount, int client_no) throws RemoteException {
         // TODO Auto-generated method stub
 
-        DefaultSystemTime time = new DefaultSystemTime();
+        time = new DefaultSystemTime();
         long bid_time = time.getSystemTime();
 
         System.out.println("Recieved bid " + (number_of_bids+1) + " for " + bidAmount + " creds at server time " + time+"!!");
