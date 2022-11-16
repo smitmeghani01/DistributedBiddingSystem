@@ -28,7 +28,7 @@ public class RMIServer extends UnicastRemoteObject implements MyInterface{
         System.out.println("Remote Server is Running now!");
         this.serverNo = serverNo;
         this.clock = Clock.systemUTC();
-        RN = new int[3];
+        RN = new int[2];
         no_of_requests=0;
         critical =false;
 
@@ -110,7 +110,7 @@ public class RMIServer extends UnicastRemoteObject implements MyInterface{
 
     public void sendRequest() throws RemoteException {
         no_of_requests++;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             try {
                 MyInterface server = (MyInterface) Naming.lookup("server" + i);
 
@@ -132,13 +132,17 @@ public class RMIServer extends UnicastRemoteObject implements MyInterface{
             System.out.println("Bid from file - " + max_bid);
             if (max_bid < bid) {
 
-                BufferedWriter outputWriter = new BufferedWriter(new FileWriter("bid.txt"));
-
+            // FileWriter fileWritter = new FileWriter(file.getName(), true);
+            // BufferedWriter outputWriter = new BufferedWriter(fileWritter);
+            BufferedWriter outputWriter = new BufferedWriter(new FileWriter("bid.txt"));
+            
                 outputWriter.write(bid + "");
                 outputWriter.flush();
                 outputWriter.close();
+
             }
         } catch (Exception e) {
+            System.out.println("error pakad liya");
             System.out.println(e);
         }
     }

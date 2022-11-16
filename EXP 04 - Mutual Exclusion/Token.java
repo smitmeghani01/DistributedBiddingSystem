@@ -9,7 +9,7 @@ public class Token extends UnicastRemoteObject implements TokenInterface{
 	int tail;
 
 	public Token() throws RemoteException{
-		token = new int[3];
+		token = new int[2];
 		queue = new int[100];
 		owner = -1;
 		head = 0;
