@@ -26,9 +26,9 @@ public class RMIServer extends UnicastRemoteObject implements MyInterface{
             System.out.println("System time registry exists, skipping making new one");
         }
         startTime = time.getSystemTime();
-        endTime = startTime + 30000;
+        endTime = startTime + 300000;
     }
-     
+    
     public static void main(String[] args) {
         try {   
             RMIServer p = new RMIServer();
@@ -46,8 +46,8 @@ public class RMIServer extends UnicastRemoteObject implements MyInterface{
         time = new DefaultSystemTime();
         long bid_time = time.getSystemTime();
 
-        System.out.println("Recieved bid " + (number_of_bids+1) + " for " + bidAmount + " creds at server time " + time+"!!");
-        // number_of_bids++;
+        System.out.println("Recieved bid " + (number_of_bids+1) + " for " + bidAmount + " creds at server time " + bid_time+"!!");
+        number_of_bids++;
 
         if (auctionOn(bid_time)) {
 

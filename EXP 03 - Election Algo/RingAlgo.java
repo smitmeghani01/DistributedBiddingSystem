@@ -51,7 +51,7 @@ public class RingAlgo{
 
         while(true){
             if(process[next].active){
-                System.out.println("Process " + process [prev].id + " pass Election(" + process  [prev].id + ") to" + process[next].id);
+                System.out.println("Process " + process [prev].id + " pass Election(" + process[prev].id + ") to " + process[next].id);
             }
             next = (next+1)%noOfProcesses;
             if(next==initiatorProcess){
@@ -84,3 +84,4 @@ public class RingAlgo{
         r.performElection();
     }
 }
+
